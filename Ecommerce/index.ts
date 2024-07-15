@@ -25,7 +25,7 @@ while(option != 4) {
 
     console.log('---------------- Menu -----------------')
     console.log('Escolha uma opcao:')
-    console.log('1 - Ver Produtos')
+    console.log('1 - Comprar Produtos')
     console.log('2 - Ver Carrinho')
     console.log('3 - Pagar')
     console.log('4 - Sair')
