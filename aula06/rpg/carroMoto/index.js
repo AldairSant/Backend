@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var carro_1 = require("./carro");
+var moto_1 = require("./moto");
+//import { Moto } from "./moto";
+var carro1 = new carro_1.Carro('Ford', 'Fiesta', 'vermelho', 2010, 120);
+var moto1 = new moto_1.Moto('BMW', 'GS1200', 'azul', 1995, 90);
+carro1.setVelocidade(99);
+carro1.getVelocidade();
+carro1.buzinar(moto1);
+moto1.setAno(1234);
+moto1.getAno();
+moto1.buzinar(carro1);
