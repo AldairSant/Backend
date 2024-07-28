@@ -56,3 +56,68 @@ CREATE TABLE alugueis_carros
     valor_total DECIMAL(10, 2)
 )
 
+ALTER TABLE alugueis_carros
+ADD aluguel_ID INT PRIMARY KEY AUTO_INCREMENT FIRST;
+
+INSERT INTO alugueis_carros
+SELECT 1, 2, '2024-04-25', '2024-04-26', DATEDIFF('2024-04-26', '2024-04-25') * preco_diaria FROM carros_aluguel WHERE carro_id = 1;
+INSERT INTO alugueis_carros
+SELECT 2, 2, '2024-04-27', '2024-04-28', DATEDIFF('2024-04-28', '2024-04-27') * preco_diaria FROM carros_aluguel WHERE carro_id = 2;
+INSERT INTO alugueis_carros
+SELECT 6, 2, '2024-04-29', '2024-04-30', DATEDIFF('2024-04-30', '2024-04-29') * preco_diaria FROM carros_aluguel WHERE carro_id = 6;
+INSERT INTO alugueis_carros
+SELECT 5, 2, '2024-04-30', '2024-05-01', DATEDIFF('2024-05-01', '2024-04-30') * preco_diaria FROM carros_aluguel WHERE carro_id = 5;
+INSERT INTO alugueis_carros
+SELECT 4, 2, '2024-04-05', '2024-04-06', DATEDIFF('2024-04-06', '2024-04-05') * preco_diaria FROM carros_aluguel WHERE carro_id = 4;
+INSERT INTO alugueis_carros
+SELECT 2, 2, '2024-04-07', '2024-04-08', DATEDIFF('2024-04-08', '2024-04-07') * preco_diaria FROM carros_aluguel WHERE carro_id = 2;
+INSERT INTO alugueis_carros
+SELECT 2, 1, '2024-05-01', '2024-05-05', DATEDIFF('2024-05-05', '2024-05-01') * preco_diaria FROM carros_aluguel WHERE carro_id = 2;
+INSERT INTO alugueis_carros
+SELECT 5, 1, '2024-05-10', '2024-05-15', DATEDIFF('2024-05-15', '2024-05-10') * preco_diaria FROM carros_aluguel WHERE carro_id = 5;
+INSERT INTO alugueis_carros
+SELECT 2, 1, '2024-05-20', '2024-05-25', DATEDIFF('2024-05-25', '2024-05-20') * preco_diaria FROM carros_aluguel WHERE carro_id = 2;
+INSERT INTO alugueis_carros
+SELECT 5, 1, '2024-05-26', '2024-05-27', DATEDIFF('2024-05-27', '2024-05-26') * preco_diaria FROM carros_aluguel WHERE carro_id = 5;
+INSERT INTO alugueis_carros
+SELECT 10, 1, '2024-05-28', '2024-05-30', DATEDIFF('2024-05-30', '2024-05-28') * preco_diaria FROM carros_aluguel WHERE carro_id = 10;
+INSERT INTO alugueis_carros
+SELECT 3, 1, '2024-06-01', '2024-06-05', DATEDIFF('2024-06-05', '2024-06-01') * preco_diaria FROM carros_aluguel WHERE carro_id = 3;
+INSERT INTO alugueis_carros
+SELECT 3, 3, '2024-06-01', '2024-06-05', DATEDIFF('2024-06-05', '2024-06-01') * preco_diaria FROM carros_aluguel WHERE carro_id = 3;
+INSERT INTO alugueis_carros
+SELECT 4, 3, '2024-06-10', '2024-06-15', DATEDIFF('2024-06-15', '2024-06-10') * preco_diaria FROM carros_aluguel WHERE carro_id = 4;
+INSERT INTO alugueis_carros
+SELECT 5, 3, '2024-07-01', '2024-07-05', DATEDIFF('2024-07-05', '2024-07-01') * preco_diaria FROM carros_aluguel WHERE carro_id = 5;
+INSERT INTO alugueis_carros
+SELECT 6, 3, '2024-07-10', '2024-07-15', DATEDIFF('2024-07-15', '2024-07-10') * preco_diaria FROM carros_aluguel WHERE carro_id = 6;
+INSERT INTO alugueis_carros
+SELECT 7, 4, '2024-06-01', '2024-06-04', DATEDIFF('2024-06-04', '2024-06-01') * preco_diaria FROM carros_aluguel WHERE carro_id = 7;
+INSERT INTO alugueis_carros
+SELECT 8, 4, '2024-06-10', '2024-06-13', DATEDIFF('2024-06-13', '2024-06-10') * preco_diaria FROM carros_aluguel WHERE carro_id = 8;
+INSERT INTO alugueis_carros
+SELECT 9, 4, '2024-07-01', '2024-07-04', DATEDIFF('2024-07-04', '2024-07-01') * preco_diaria FROM carros_aluguel WHERE carro_id = 9;
+INSERT INTO alugueis_carros
+SELECT 10, 4, '2024-07-10', '2024-07-13', DATEDIFF('2024-07-13', '2024-07-10') * preco_diaria FROM carros_aluguel WHERE carro_id = 10;
+INSERT INTO alugueis_carros
+SELECT 1, 5, '2024-02-01', '2024-02-10', DATEDIFF('2024-02-10', '2024-02-01') * preco_diaria FROM carros_aluguel WHERE carro_id = 1;
+INSERT INTO alugueis_carros
+SELECT 5, 5, '2024-03-15', '2024-03-20', DATEDIFF('2024-03-20', '2024-03-15') * preco_diaria FROM carros_aluguel WHERE carro_id = 5;
+INSERT INTO alugueis_carros
+SELECT 3, 5, '2024-04-05', '2024-04-25', DATEDIFF('2024-04-25', '2024-04-05') * preco_diaria FROM carros_aluguel WHERE carro_id = 3;
+INSERT INTO alugueis_carros
+SELECT 2, 5, '2024-05-10', '2024-05-30', DATEDIFF('2024-05-30', '2024-05-10') * preco_diaria FROM carros_aluguel WHERE carro_id = 2;
+INSERT INTO alugueis_carros
+SELECT 4, 5, '2024-06-01', '2024-06-10', DATEDIFF('2024-06-10', '2024-06-01') * preco_diaria FROM carros_aluguel WHERE carro_id = 4;
+
+SELECT clientes.nome, SUM(alugueis_carros.valor_total) AS total_gasto_com_locaçoes
+FROM clientes
+INNER JOIN alugueis_carros ON clientes.cliente_id = alugueis_carros.cliente_id
+GROUP BY clientes.nome
+ORDER BY clientes.nome ASC;
+
+SELECT carros_aluguel.marca, carros_aluguel.modelo, COUNT(carros_aluguel.carro_id) AS vezes_que_foi_alugado
+FROM carros_aluguel
+LEFT JOIN alugueis_carros ON carros_aluguel.carro_id = alugueis_carros.carro_id
+GROUP BY carros_aluguel.carro_id
+ORDER BY carros_aluguel.marca;
