@@ -8,7 +8,7 @@ app.use(bodyParser.json())
 const connection = mysql.createConnection({ // cria a conexão com o banco de dados
     host: "localhost",
     user: "root",
-    password: "password",
+    password: "",
     database: "catalogo_produtos"
 })
 
@@ -20,7 +20,8 @@ connection.connect(err => { // efetua a conexão
     console.log('conectado ao banco de dados com o ID: ' + connection.threadId)
 })
 
-app.post('/produtos', (req, res) => { // cria novo produto
+ // cria novo produto --------------------
+app.post('/produtos', (req, res) => {
     const {nome, descricao, preco} = req.body
 
     if(!nome || !descricao || !preco) { // valida se todos os dados foram inseridos corretamente.
@@ -39,8 +40,8 @@ app.post('/produtos', (req, res) => { // cria novo produto
     })
 })
 
-
-app.get('/produtos', (req, res) => { // retorna todos os produtos
+ // retorna todos os produtos ------------------------
+app.get('/produtos', (req, res) => {
     const sql = "SELECT * FROM produtos"
     connection.query(sql, (err, results) => {
         if(err){
@@ -51,7 +52,9 @@ app.get('/produtos', (req, res) => { // retorna todos os produtos
     })
 })
 
-app.get('/produtos/:id', (req, res) => { // retorna o produto de acordo com o id
+
+ // retorna o produto de acordo com o id ---------------------------
+app.get('/produtos/:id', (req, res) => {
     const sql = 'SELECT * FROM produtos WHERE id = ?'
     connection.query(sql, [req.params.id], (error, results) => {
         if(error) {
@@ -66,7 +69,8 @@ app.get('/produtos/:id', (req, res) => { // retorna o produto de acordo com o id
     })
 })
 
-app.put('/produtos/:id', (req, res) => { // atualiza produto
+ // atualiza produto -------------------------------
+app.put('/produtos/:id', (req, res) => {
     const {nome, descricao, preco} = req.body
 
     if(!nome || !descricao || !preco) { // valida se todos os dados foram inseridos corretamente.
@@ -86,7 +90,8 @@ app.put('/produtos/:id', (req, res) => { // atualiza produto
 
 })
 
-app.delete('/produtos/:id', (req, res) => { // deleta um produto
+ // deleta um produto ------------------------
+app.delete('/produtos/:id', (req, res) => {
     const sql = 'DELETE FROM produtos WHERE id = ?'
     connection.query(sql, [req.params.id], (err) => {
         if(err) {
